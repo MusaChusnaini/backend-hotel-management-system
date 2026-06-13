@@ -22,7 +22,16 @@ public class RoomType {
     private String description;
 
     @Column(name = "base_price", nullable = false)
-    private double basePrice;
+    private Double basePrice;
+
+    public RoomType() {}
+
+    public RoomType(Long id, String name, String description, Double basePrice) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.basePrice = basePrice;
+    }
 
     public Long getId() {
         return id;
