@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,19 +20,21 @@ public class Room {
     @Column(name = "room_number", nullable = false, unique = true) 
     private String roomNumber;
 
-    @Column(name = "room_type_id", nullable = false)
-    private Long roomTypeId;
+    // UBAH BAGIAN INI: Dari Long jadi objek RoomType dengan relasi ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "room_type_id", nullable = false)
+    private RoomType roomType;
 
     @Column(nullable = false) 
     private String status = "AVAILABLE";
 
-    //Constructor buat handle JPA
     public Room() {}
 
-    public Room(Long id, String roomNumber, Long roomTypeId, String status) {
+    // Sesuaikan parameternya di constructor
+    public Room(Long id, String roomNumber, RoomType roomType, String status) {
         this.id = id;
         this.roomNumber = roomNumber;
-        this.roomTypeId = roomTypeId;
+        this.roomType = roomType;
         this.status = status;
     }
     
@@ -40,8 +44,9 @@ public class Room {
     public String getRoomNumber() { return roomNumber; }
     public void setRoomNumber(String roomNumber) { this.roomNumber = roomNumber; }
 
-    public Long getRoomTypeId() { return roomTypeId; }
-    public void setRoomTypeId(Long roomTypeId) { this.roomTypeId = roomTypeId; }
+    // Sesuaikan Getter & Setter untuk RoomType objek
+    public RoomType getRoomType() { return roomType; }
+    public void setRoomType(RoomType roomType) { this.roomType = roomType; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
