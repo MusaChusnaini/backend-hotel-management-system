@@ -41,30 +41,40 @@ public class Guest {
     public Long getId() {
         return id;
     }
-    public String getfullName() {
+    
+    public String getFullName() {
         return fullName;
     }
-    public String getnikOrPassport() {
+    
+    public String getNikOrPassport() {
         return nikOrPassport;
     }
-    public String getphoneNumber() {
+    
+    public String getPhoneNumber() {
         return phoneNumber;
     }
+    
     public String getEmail() {
         return email;
     }
+
+    // --- SETTER (Sudah Diperbaiki Huruf Kapitalnya) ---
     public void setId(Long id) {
         this.id = id;
     }
-    public void setfullName(String fullName) {
+    
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    public void setnikOrPassport(String nikOrPassport) {
+    
+    public void setNikOrPassport(String nikOrPassport) {
         this.nikOrPassport = nikOrPassport;
     }
-    public void setphoneNumber(String phoneNumber) {
+    
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
     public void setEmail(String email) {
         this.email = email;
     }
