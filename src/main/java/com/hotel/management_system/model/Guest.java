@@ -1,11 +1,11 @@
 package com.hotel.management_system.model;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
 
 
 @Entity
@@ -67,6 +67,36 @@ public class Guest {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public java.time.LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public java.time.LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+    public void setUpdatedAt(java.time.LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    @jakarta.persistence.Column(name = "created_at", updatable = false)
+    private java.time.LocalDateTime createdAt;
+
+    @jakarta.persistence.Column(name = "updated_at")
+    private java.time.LocalDateTime updatedAt;
+
+    @jakarta.persistence.PrePersist
+    protected void onCreate() {
+        this.createdAt = java.time.LocalDateTime.now();
+        this.updatedAt = java.time.LocalDateTime.now();
+    }
+    @jakarta.persistence.PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = java.time.LocalDateTime.now();
     }
 }
 
